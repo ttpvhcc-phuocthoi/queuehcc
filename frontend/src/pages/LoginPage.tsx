@@ -13,7 +13,7 @@ function LoginPage() {
     setError('');
 
     try {
-      const response = await fetch('/workers/login', {
+      const response = await fetch('{__API_URL__}/workers/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })

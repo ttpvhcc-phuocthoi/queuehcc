@@ -157,7 +157,7 @@ function LandingPage() {
 
     async function loadFeed() {
         try {
-            const response = await fetch('/general/feed');
+            const response = await fetch('{__API_URL__}/general/feed');
             if (!response.ok) {
                 throw new Error('Unable to load display feed');
             }
@@ -172,7 +172,7 @@ function LandingPage() {
 
     useEffect(() => {
         let isMounted = true;
-        const eventSource = new EventSource('/general/feed/stream');
+        const eventSource = new EventSource('{__API_URL__}/general/feed/stream');
 
         eventSource.addEventListener('connected', () => {
             if (isMounted) {

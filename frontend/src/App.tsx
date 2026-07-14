@@ -25,7 +25,7 @@ function App() {
       <Route path="/landing" element={<LandingPage />} />
       <Route path="/queue" element={<QueuePage />} />
       <Route path="/queue/success" element={<QueueSuccessPage />} />
-      <Route path="/display" element={<DisplayPage />} />
+      {/* <Route path="/display" element={<DisplayPage />} /> */}
       <Route
         path="/counter"
         element={isAuthenticated ? <CounterPage /> : <Navigate to="/login" replace />}

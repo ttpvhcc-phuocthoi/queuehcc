@@ -50,7 +50,7 @@ function CounterPage() {
         }
         setError('');
 
-        const workerResponse = await fetch(`/workers/${workerId}`);
+        const workerResponse = await fetch(`{__API_URL__}/workers/${workerId}`);
         if (!workerResponse.ok) {
           throw new Error('Unable to load worker info');
         }
@@ -63,7 +63,7 @@ function CounterPage() {
         });
 
         const customerResponse = await fetch(
-          `/customers?counterId=${workerData.counterId}`
+          `{__API_URL__}/customers?counterId=${workerData.counterId}`
         );
         if (!customerResponse.ok) {
           throw new Error('Unable to load counter customer');
@@ -108,7 +108,7 @@ function CounterPage() {
       setLoading(true);
       setError('');
 
-      const response = await fetch(`/customers/${customerId}/status`, {
+      const response = await fetch(`{__API_URL__}/customers/${customerId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })

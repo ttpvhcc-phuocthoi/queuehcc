@@ -6,6 +6,9 @@ export default defineConfig(({ mode }) => {
   const backendTarget = env.VITE_API_BASE_URL || 'http://localhost:3000';
 
   return {
+    define: {
+      __API_URL__: JSON.stringify(env.VITE_API_BASE_URL || 'http://localhost:3000')
+    },
     plugins: [react()],
     server: {
       host: env.VITE_HOST || '0.0.0.0',
