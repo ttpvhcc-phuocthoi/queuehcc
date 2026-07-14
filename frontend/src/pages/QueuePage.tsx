@@ -22,7 +22,7 @@ function QueuePage() {
         setLoading(true);
         setError('');
 
-        const response = await fetch('{__API_URL__}/general/counters');
+        const response = await fetch(`${API_URL}/general/counters`);
         if (!response.ok) {
           throw new Error('Unable to load counters');
         }
@@ -44,7 +44,7 @@ function QueuePage() {
       setCreatingId(counter.id);
       setError('');
 
-      const response = await fetch('{__API_URL__}/customers', {
+      const response = await fetch('{API_URL}/customers', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
