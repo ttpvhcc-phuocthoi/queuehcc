@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum CustomerStatus {
+  WAITING
+  PROCESSING
+  COMPLETED
+  SKIPPED
+}
+
+model Counter {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  createdBy String?
+  createdAt DateTime  @default(now())
+  updatedBy String?
+  updatedAt DateTime  @updatedAt
+
+  workers   Worker[]
+  customers Customer[]
+}
+
+model Worker {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  displayName  String
+  avatar       String?
+  counterId    Int
+  counter      Counter  @relation(fields: [counterId], references: [id])
+  createdBy    String?
+  createdAt    DateTime @default(now())
+  updatedBy    String?
+  updatedAt    DateTime @updatedAt
+}
+
+model Customer {
+  id             Int            @id @default(autoincrement())
+  name           String?
+  phoneNumber    String?
+  priorityLevel  Int            @default(0)
+  counterId      Int
+  counter        Counter        @relation(fields: [counterId], references: [id])
+  queueNumber    Int
+  queueDate      DateTime       @db.Date
+  status         CustomerStatus @default(WAITING)
+  calledAt       DateTime?
+  completedAt    DateTime?
+  createdBy      String?
+  createdAt      DateTime       @default(now())
+  updatedBy      String?
+  updatedAt      DateTime       @updatedAt
+
+  @@unique([counterId, queueDate, queueNumber])
+  @@index([phoneNumber, queueDate])
+}
