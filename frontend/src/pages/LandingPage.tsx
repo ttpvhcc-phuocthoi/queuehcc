@@ -24,7 +24,7 @@ type FeedItem = {
 };
 
 const COUNTERS: CounterMeta[] = [
-    { id: 1, name: 'Trả kết quả' },
+    { id: 1, name: 'TRẢ KẾT QUẢ' },
     { id: 2, name: 'TÀI CHÍNH, NỘI VỤ - Y TẾ' },
     { id: 3, name: 'XÂY DỰNG - CÔNG THƯƠNG' },
     { id: 4, name: 'ĐẤT ĐAI MÔI TRƯỜNG' },
