@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 const soundEnabled = false;
 
 type Customer = {
@@ -157,7 +159,7 @@ function LandingPage() {
 
     async function loadFeed() {
         try {
-            const response = await fetch('{__API_URL__}/general/feed');
+            const response = await fetch(`${API_URL}/general/feed`);
             if (!response.ok) {
                 throw new Error('Unable to load display feed');
             }
@@ -172,7 +174,7 @@ function LandingPage() {
 
     useEffect(() => {
         let isMounted = true;
-        const eventSource = new EventSource('{__API_URL__}/general/feed/stream');
+        const eventSource = new EventSource(`${API_URL}/general/feed/stream`);
 
         eventSource.addEventListener('connected', () => {
             if (isMounted) {

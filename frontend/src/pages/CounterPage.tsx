@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { clearSessionWorker, getSessionWorkerId } from '../session';
 
+const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 type Customer = {
   id: number;
   name: string | null;
@@ -50,7 +52,7 @@ function CounterPage() {
         }
         setError('');
 
-        const workerResponse = await fetch(`{__API_URL__}/workers/${workerId}`);
+        const workerResponse = await fetch(`${API_URL}/workers/${workerId}`);
         if (!workerResponse.ok) {
           throw new Error('Unable to load worker info');
         }
@@ -63,7 +65,7 @@ function CounterPage() {
         });
 
         const customerResponse = await fetch(
-          `{__API_URL__}/customers?counterId=${workerData.counterId}`
+          `${API_URL}/customers?counterId=${workerData.counterId}`
         );
         if (!customerResponse.ok) {
           throw new Error('Unable to load counter customer');
@@ -108,7 +110,7 @@ function CounterPage() {
       setLoading(true);
       setError('');
 
-      const response = await fetch(`{__API_URL__}/customers/${customerId}/status`, {
+      const response = await fetch(`${API_URL}/customers/${customerId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })

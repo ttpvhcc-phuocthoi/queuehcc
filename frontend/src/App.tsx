@@ -8,6 +8,9 @@ import DisplayPage from './pages/DisplayPage';
 import LandingPage from './pages/LandingPage';
 import { getSessionWorkerId, subscribeToSessionChange } from './session';
 
+
+const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(Boolean(getSessionWorkerId()));
 

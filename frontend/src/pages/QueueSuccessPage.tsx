@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 type Customer = {
     id: number;
     queueNumber: number;
@@ -48,7 +50,7 @@ function QueueSuccessPage() {
             setError('');
             setSuccessMessage('');
 
-            const response = await fetch(`/customers/${customer.id}`, {
+            const response = await fetch(`${API_URL}/customers/${customer.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
