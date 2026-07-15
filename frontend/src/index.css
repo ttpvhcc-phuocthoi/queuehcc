@@ -6,6 +6,10 @@
   --db-counter-head: #1e40af;
 }
 
+.layout-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
 
 body {
   margin: 0;
