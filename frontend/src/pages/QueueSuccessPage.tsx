@@ -70,7 +70,7 @@ function QueueSuccessPage() {
             setFullName(updatedCustomer.name ?? '');
             setPhoneNumber(updatedCustomer.phoneNumber ?? '');
             setIsPriority(updatedCustomer.priorityLevel === 1);
-            setSuccessMessage('Thông tin khách hàng đã được cập nhật.');
+            setSuccessMessage('Thông tin được cập nhật.');
             navigate('/queue/success', { replace: true, state: { customer: updatedCustomer, counterName: state?.counterName } });
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Unable to update customer information');
@@ -98,7 +98,7 @@ function QueueSuccessPage() {
                         </div>
 
                         <div className="customer-form-card">
-                            <h2>Thông tin cá nhân</h2>
+                            <h2>Thông tin cá nhân <strong>(KHÔNG BẮT BUỘC)</strong></h2>
                             {error && <div className="error">{error}</div>}
                             {successMessage && <div className="success-message">{successMessage}</div>}
                             <label>
