@@ -7,6 +7,7 @@ import QueueSuccessPage from './pages/QueueSuccessPage';
 import DisplayPage from './pages/DisplayPage';
 import LandingPage from './pages/LandingPage';
 import { getSessionWorkerId, subscribeToSessionChange } from './session';
+import MainLayout from './layout/mainlayout';
 
 
 const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
@@ -24,9 +25,12 @@ function App() {
 
   return (
     <Routes>
+      <Route element={<MainLayout />} >
+        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/queue" element={<QueuePage />} />
+      </Route>
+
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/landing" element={<LandingPage />} />
-      <Route path="/queue" element={<QueuePage />} />
       <Route path="/queue/success" element={<QueueSuccessPage />} />
       {/* <Route path="/display" element={<DisplayPage />} /> */}
       <Route

@@ -73,13 +73,10 @@ function QueuePage() {
   }
 
   return (
-    <div className="table-wrapper">
+    <div className="queuepage-wrapper">
       <div className="container">
         <div className="header-row">
-          <div>
-            <h1>Chọn quầy</h1>
-            <p>Chọn quầy để bắt số</p>
-          </div>
+            <h1>Chọn quầy để lấy số thứ tự</h1>
         </div>
 
         {loading && <p>Loading counters…</p>}
@@ -101,8 +98,8 @@ function QueuePage() {
                   }
                 }}
               >
-                <span className="counter-badge">Quầy {counter.id}</span>
-                <h2>{counter.name}</h2>
+                <div className="counter-badge">Quầy {counter.id}</div>
+                <h2 className='text-center'>{counter.name}</h2>
                 {/* <p>{creatingId === counter.id ? 'Creating ticket…' : 'Tap to create a queue number'}</p> */}
               </div>
             ))}

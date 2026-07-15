@@ -205,7 +205,7 @@ function CounterPage() {
                         <span className="completed-pill">Đã hoàn tất</span>
                       ) : (
                         <div className="table-actions">
-                          {customer.status !== 'PROCESSING' && (
+                          {customer.status === 'WAITING' && (
                             <button onClick={() => updateStatus(customer.id, 'PROCESSING')}>Gọi</button>
                           )}
                           <button className="secondary" onClick={() => updateStatus(customer.id, 'COMPLETED')}>

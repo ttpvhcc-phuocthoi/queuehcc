@@ -36,7 +36,7 @@ function LoginPage() {
   return (
     <div className="page">
       <div className="card">
-        <h1>Worker Login</h1>
+        <h1>ĐĂNG NHẬP</h1>
         <form onSubmit={handleSubmit}>
           <label>
             Username

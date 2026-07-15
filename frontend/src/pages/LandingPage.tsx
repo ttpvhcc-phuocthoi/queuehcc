@@ -256,10 +256,6 @@ function LandingPage() {
 
     return (
         <div className="landing-page">
-            <div className="text-center">
-                <h1>TRUNG TÂM PHỤC VỤ HÀNH CHÍNH CÔNG PHƯỜNG PHƯỚC THỚI</h1>
-            </div>
-
             {loading && <p>Đang tải dữ liệu…</p>}
             {error && <div className="error">{error}</div>}
 
