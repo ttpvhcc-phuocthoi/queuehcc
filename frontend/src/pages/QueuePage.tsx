@@ -44,7 +44,7 @@ function QueuePage() {
       setCreatingId(counter.id);
       setError('');
 
-      const response = await fetch('{API_URL}/customers', {
+      const response = await fetch(`${API_URL}/customers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
