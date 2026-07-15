@@ -9,7 +9,7 @@ export default function MainLayout() {
       <main className='content-wrapper'>
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
